@@ -5,6 +5,7 @@ Książkę mam w d:\Books\Tech\Docker Up & Running.pdf
 ## Cheetsheet
 - docker container ls /docker ps/docker container ps
 - docker container stop b7145e06083f / docker stop
+- docker image ls
 
 ## Docker-node-hello1
 
@@ -53,7 +54,7 @@ CMD ["supervisord", "-n"]
 ```shell
 docker image build -t pwlearning1/docker-node-hello:latest .
 
-docker impage build --build-arg email=pwujczyk@gmail.co -t pwlearning1/docker-node-hello:latest .
+docker image build --build-arg email=pwujczyk@gmail.co -t pwlearning1/docker-node-hello:latest .
 
 docker inspect example/docker-node-hello:latest | grep 
 maintainer
@@ -61,7 +62,7 @@ maintainer
 run te image with 
 - pwlearning1/docker-node-hello:latest tag
 - on port 6089
-- 
+- --env pozwala na dodanie envów
 ```shell
 docker container run --rm -d -p 6089:6080 pwlearning1/docker-node-hello:latest
 
@@ -73,5 +74,19 @@ docker container run --rm -d -p 6088:6080 --env WHO="kasia" pwlearning1/docker-n
 ```
 curl 0.0.0.0:6089
 ```
+
+
+## Docker Hub
+
+```
+sudo docker login
+sudo docker image build -t docker.io/pwujczyk/docker-node-hello:latest .
+sudo docker image ls pwujczyk/docker-node-hello
+sudo docker image push pwujczyk/docker-node-hello:latest
+docker image pull ${<myuser>}/docker-node-hello:latest
+```
+https://hub.docker.com/u/pwujczyk
+
+![](Images/20241217211148.png)
 
 strona 80
